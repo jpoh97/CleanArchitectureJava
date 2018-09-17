@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.5.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.cleanarchitecture.lievendoclo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_1_10
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile group: 'org.springframework', name: 'spring-web'
+	compile('org.springframework.boot:spring-boot-starter')
+	compile("com.h2database:h2")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile "com.google.code.findbugs:jsr305:3.0.1"
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.6'
+	compile group: 'org.mongodb.morphia', name: 'morphia', version: '1.3.2'
+
+	runtime('javax.xml.bind:jaxb-api')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
